@@ -7120,13 +7120,13 @@
 		(layer "Edge.Cuts")
 		(uuid "f3cf1a38-311a-41ea-ae5f-422363f6fcc5")
 	)
-	(gr_text "LNA 50-2000 MHz\n(c) wa1hco\nCreative Commons License V4\nAttribute and Share Alike"
-		(at 110 97.7 0)
+	(gr_text "LNA 50-2000 MHz\n(c) wa1hco 250219\nCreative Commons License V4\nAttribute and Share Alike"
+		(at 110.4 97.7 0)
 		(layer "B.SilkS")
 		(uuid "dc4caef7-97fc-4b19-81f3-c4f54dfdd54f")
 		(effects
 			(font
-				(size 0.8 0.7)
+				(size 0.8 0.6)
 				(thickness 0.08)
 			)
 			(justify bottom mirror)
@@ -7950,12 +7950,28 @@
 		(uuid "62fd6347-25a3-4fa0-93d3-b0c1a2592896")
 	)
 	(via
+		(at 106.6 97.2)
+		(size 0.45)
+		(drill 0.3)
+		(layers "F.Cu" "B.Cu")
+		(net 4)
+		(uuid "63506f28-f42e-46e8-9bfc-a1fbd61b525f")
+	)
+	(via
 		(at 112.4 101)
 		(size 0.45)
 		(drill 0.3)
 		(layers "F.Cu" "B.Cu")
 		(net 4)
 		(uuid "64d54adc-fb48-4c70-9411-5f1224b9a0e7")
+	)
+	(via
+		(at 107.5 97.8)
+		(size 0.45)
+		(drill 0.3)
+		(layers "F.Cu" "B.Cu")
+		(net 4)
+		(uuid "69daea31-3694-40d6-b50b-ddae9fdc63a2")
 	)
 	(via
 		(at 110.3275 98.9)
@@ -7980,6 +7996,14 @@
 		(layers "F.Cu" "B.Cu")
 		(net 4)
 		(uuid "6e240eec-86bf-466c-8ff5-8b137b9c0c11")
+	)
+	(via
+		(at 107.5 98.9)
+		(size 0.45)
+		(drill 0.3)
+		(layers "F.Cu" "B.Cu")
+		(net 4)
+		(uuid "6e88125b-8d2b-4622-8864-65f1a774c762")
 	)
 	(via
 		(at 104.4 101.3)
