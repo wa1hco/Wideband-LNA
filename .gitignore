@@ -34,3 +34,6 @@ fp-info-cache
 # generated for jlcpcb
 jlcpcb/
 production/
+
+# test data
+Pictures/
