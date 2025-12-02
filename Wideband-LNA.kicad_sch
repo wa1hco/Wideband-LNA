@@ -2547,6 +2547,16 @@
 			(embedded_fonts no)
 		)
 	)
+	(text "Git Branch TQP3M9036_19x19_V3.4"
+		(exclude_from_sim no)
+		(at 209.042 185.928 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "22bce4fa-cd23-4eb3-91d3-ae86f58ba9cb")
+	)
 	(text "V1\n"
 		(exclude_from_sim no)
 		(at 270.256 193.294 0)
@@ -2557,15 +2567,25 @@
 		)
 		(uuid "3f6a40cb-e66a-479f-b63f-5ce6fb220338")
 	)
-	(text "January, 2025"
+	(text "November, 2025"
 		(exclude_from_sim no)
-		(at 214.122 193.294 0)
+		(at 198.374 199.136 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 		)
 		(uuid "401abd9c-aae7-4ace-a71c-81a53c1080fa")
+	)
+	(text "V3.4"
+		(exclude_from_sim no)
+		(at 253.492 199.39 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "93d5e8bc-a53f-4094-afb7-84cf1c288582")
 	)
 	(text "Vout = Vref(1 + (R1/R2))\n4.8V = 0.8 * (150K/30K + 1)"
 		(exclude_from_sim no)
@@ -2578,9 +2598,9 @@
 		)
 		(uuid "c6e3aaf5-42b7-49bb-9859-fa68b63e7513")
 	)
-	(text "Qorvo TQP3M9037 LNA 0.5 dB NF, 18 dB gain, 33 dB OIP3, 500 to 6 GHz"
+	(text "Qorvo TQP3M9036 LNA 50 to 1500 MHz"
 		(exclude_from_sim no)
-		(at 224.028 189.992 0)
+		(at 189.992 195.58 0)
 		(effects
 			(font
 				(size 1.27 1.27)

@@ -6380,6 +6380,46 @@
 		(layer "Edge.Cuts")
 		(uuid "f3cf1a38-311a-41ea-ae5f-422363f6fcc5")
 	)
+	(gr_text "November, 2025"
+		(at 197.05 198.91 0)
+		(layer "F.Cu")
+		(uuid "1426c441-889f-4fda-a394-bef7191ad032")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(gr_text "V3.4"
+		(at 253.76 199.04 0)
+		(layer "F.Cu")
+		(uuid "a8f8c7dc-7160-44c5-bf9b-3d4d94b83808")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(gr_text "Qorvo TQP3M9036 LNA 50 to 1500 MHz"
+		(at 189.41 195.38 0)
+		(layer "F.Cu")
+		(uuid "af77bb64-2d0a-4c92-b730-50ff056ce9c7")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(gr_text "Git Branch TQP3M9036_19x19_V3.4"
+		(at 205.04 184.62 0)
+		(layer "F.Cu")
+		(uuid "e364c829-1656-4bed-b584-5f953dad3061")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
 	(gr_text "LNA 50-2000 MHz V3.4\n(c) wa1hco 250219\nCreative Commons License V4\nAttribute and Share Alike"
 		(at 110.4 97.7 0)
 		(layer "B.SilkS")
