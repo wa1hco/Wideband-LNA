@@ -121,7 +121,7 @@
 			(dashed_line_dash_ratio 12.000000)
 			(dashed_line_gap_ratio 3.000000)
 			(svgprecision 4)
-			(plotframeref no)
+			(plotframeref yes)
 			(mode 1)
 			(useauxorigin no)
 			(hpglpennumber 1)
@@ -145,7 +145,7 @@
 			(subtractmaskfromsilk no)
 			(outputformat 1)
 			(mirror no)
-			(drillshape 1)
+			(drillshape 0)
 			(scaleselection 1)
 			(outputdirectory "")
 		)
@@ -8801,6 +8801,58 @@
 				(thickness 0.08)
 			)
 			(justify bottom)
+		)
+	)
+	(gr_text "V3.2"
+		(at 251.78 199.99 0)
+		(layer "Cmts.User")
+		(uuid "06de3401-6bb0-4060-af23-8263832e60c6")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.3)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "2 layer board, Ground plane top and bottom, extensive through vias, \nMicrostrip, not coplanar"
+		(at 166.71 178.33 0)
+		(layer "Cmts.User")
+		(uuid "18e2fc7a-adee-46d2-a1d7-e4d2fc00c2b8")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.3)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "November, 2025\n"
+		(at 189.8 199.78 0)
+		(layer "Cmts.User")
+		(uuid "990ecd22-94bd-4a91-9e4e-740d5ec8ed29")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.3)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "Wideband LNA PGA103"
+		(at 170.3 196.19 0)
+		(layer "Cmts.User")
+		(uuid "d7c88e4e-c374-4755-8dc8-8856ec579dea")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.3)
+				(bold yes)
+			)
+			(justify left bottom)
 		)
 	)
 	(dimension

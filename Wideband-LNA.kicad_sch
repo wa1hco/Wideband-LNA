@@ -2622,6 +2622,16 @@
 		)
 		(uuid "2c7cd517-fbe5-4baa-a179-d003ec1a771d")
 	)
+	(text "V3.2"
+		(exclude_from_sim no)
+		(at 252.984 199.136 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "3012ed8b-a8c8-449b-a018-aee87676796e")
+	)
 	(text "V1\n"
 		(exclude_from_sim no)
 		(at 270.256 193.294 0)
@@ -2683,15 +2693,25 @@
 		)
 		(uuid "c6e3aaf5-42b7-49bb-9859-fa68b63e7513")
 	)
-	(text "LNA PGA103+ 0.5 dB NF, 22 dB gain, 33 dB OIP3, 50 MHz to 3 GHz"
+	(text "Wideband LNA PGA103+"
 		(exclude_from_sim no)
-		(at 212.852 176.022 0)
+		(at 180.34 195.58 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 		)
 		(uuid "ccee30a0-ea87-4fe4-a67d-5187c55bba90")
+	)
+	(text "Git Branch PGA103_v3.2"
+		(exclude_from_sim no)
+		(at 219.964 185.42 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "e13613cb-ce1d-4e97-a319-daacb15c4b22")
 	)
 	(text "2 mm mounting holes"
 		(exclude_from_sim no)
