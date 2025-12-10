@@ -948,174 +948,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Device:D"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 1.016)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "D"
-				(at 0 2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "D"
-				(at 0 -2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Diode"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Sim.Device" "D"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Sim.Pins" "1=K 2=A"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "diode"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "D_0_1"
-				(polyline
-					(pts
-						(xy -1.27 1.27) (xy -1.27 -1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 0) (xy -1.27 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "D_1_1"
-				(pin passive line
-					(at -3.81 0 0)
-					(length 2.54)
-					(name "K"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 3.81 0 180)
-					(length 2.54)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Device:FerriteBead_Small"
 			(pin_numbers
 				(hide yes)
@@ -2615,12 +2447,6 @@
 		(uuid "0030a4c2-a188-484d-8797-7880fc438fbf")
 	)
 	(junction
-		(at 210.82 88.9)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "3baef545-f11c-4ba9-9365-6c981bea1df3")
-	)
-	(junction
 		(at 166.37 69.85)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2631,12 +2457,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "4156f0a7-ee6d-4d71-a633-73a7e2103034")
-	)
-	(junction
-		(at 210.82 106.68)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "4e78d6d4-7123-48e9-8b4e-5419bd1dbd8a")
 	)
 	(junction
 		(at 162.56 78.74)
@@ -2746,16 +2566,6 @@
 	)
 	(wire
 		(pts
-			(xy 210.82 71.12) (xy 210.82 58.42)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0cdf8fa1-1310-46a3-be7f-07248c11300a")
-	)
-	(wire
-		(pts
 			(xy 154.94 78.74) (xy 162.56 78.74)
 		)
 		(stroke
@@ -2816,16 +2626,6 @@
 	)
 	(wire
 		(pts
-			(xy 210.82 97.79) (xy 210.82 88.9)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "47983878-aeba-4f9b-a3bd-8512c3ac262d")
-	)
-	(wire
-		(pts
 			(xy 171.45 88.9) (xy 181.61 88.9)
 		)
 		(stroke
@@ -2856,16 +2656,6 @@
 	)
 	(wire
 		(pts
-			(xy 201.93 90.17) (xy 201.93 88.9)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5edb8b21-eb15-456b-82d1-b5e1a9f1679c")
-	)
-	(wire
-		(pts
 			(xy 196.85 78.74) (xy 196.85 77.47)
 		)
 		(stroke
@@ -2883,16 +2673,6 @@
 			(type default)
 		)
 		(uuid "74069336-5351-4152-93f6-482c27771c17")
-	)
-	(wire
-		(pts
-			(xy 210.82 102.87) (xy 210.82 106.68)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "775a5128-47fa-4b66-9e16-1cc9dcd2e8c2")
 	)
 	(wire
 		(pts
@@ -2946,36 +2726,6 @@
 	)
 	(wire
 		(pts
-			(xy 210.82 58.42) (xy 125.73 58.42)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a9ffa846-5711-48ba-b435-2d0d26284447")
-	)
-	(wire
-		(pts
-			(xy 125.73 58.42) (xy 125.73 69.85)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b3c83d30-d2b7-46ce-9ddc-3fcdd801c4c2")
-	)
-	(wire
-		(pts
-			(xy 201.93 88.9) (xy 210.82 88.9)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c4de1fd0-b95f-48eb-acb6-05b1bd7519df")
-	)
-	(wire
-		(pts
 			(xy 154.94 72.39) (xy 154.94 78.74)
 		)
 		(stroke
@@ -2993,16 +2743,6 @@
 			(type default)
 		)
 		(uuid "c782659a-22ab-4afc-8090-54f9c32dfcb7")
-	)
-	(wire
-		(pts
-			(xy 210.82 106.68) (xy 194.31 106.68)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c7a4c078-aa1a-4b48-8dee-308e281e80c0")
 	)
 	(wire
 		(pts
@@ -3026,7 +2766,7 @@
 	)
 	(wire
 		(pts
-			(xy 223.52 106.68) (xy 210.82 106.68)
+			(xy 194.31 106.68) (xy 223.52 106.68)
 		)
 		(stroke
 			(width 0)
@@ -3113,16 +2853,6 @@
 			(type default)
 		)
 		(uuid "ef938ce3-f770-40d5-bed3-7c3f983ec637")
-	)
-	(wire
-		(pts
-			(xy 210.82 88.9) (xy 210.82 78.74)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f2af92df-18e2-4e8d-994f-8ac7a3340254")
 	)
 	(wire
 		(pts
@@ -4890,160 +4620,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:L_Small")
-		(at 210.82 100.33 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "7c752c16-da35-4e4e-89e1-7e72cc8d51bc")
-		(property "Reference" "L3"
-			(at 212.344 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "680n"
-			(at 212.344 101.854 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Inductor_SMD:L_0603_1608Metric"
-			(at 210.82 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 210.82 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Inductor, small symbol"
-			(at 210.82 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C405073"
-			(at 212.09 99.0599 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "e6f132e2-6e9e-4efa-966e-ea0d67cce41d")
-		)
-		(pin "2"
-			(uuid "85a3389f-1c3e-42cd-83d3-ae915043a334")
-		)
-		(instances
-			(project "Wideband-LNA"
-				(path "/ca1d3916-a79a-40f2-ac9b-d40d7209574c"
-					(reference "L3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C")
-		(at 201.93 93.98 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "7dc495b3-f0ef-46e0-9f12-1220d489643b")
-		(property "Reference" "C8"
-			(at 203.962 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "330p"
-			(at 204.978 96.774 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 202.8952 97.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 201.93 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Unpolarized capacitor"
-			(at 201.93 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C1546"
-			(at 203.962 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "1144a92f-fb40-4d9d-a75f-3462802a02ab")
-		)
-		(pin "2"
-			(uuid "f31cc50e-e66b-4509-b3bf-dbb4be09ce81")
-		)
-		(instances
-			(project "Wideband-LNA"
-				(path "/ca1d3916-a79a-40f2-ac9b-d40d7209574c"
-					(reference "C8")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R_Small_US")
 		(at 101.6 77.47 90)
 		(unit 1)
@@ -5687,73 +5263,6 @@
 			(project ""
 				(path "/ca1d3916-a79a-40f2-ac9b-d40d7209574c"
 					(reference "U2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 201.93 97.79 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "b77040be-61ba-4c2d-941b-cd18811d07e3")
-		(property "Reference" "#PWR023"
-			(at 201.93 104.14 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 201.93 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 201.93 97.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 201.93 97.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 201.93 97.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "bebeeaf6-21ca-44be-964a-c88f852aaccc")
-		)
-		(instances
-			(project "Wideband-LNA"
-				(path "/ca1d3916-a79a-40f2-ac9b-d40d7209574c"
-					(reference "#PWR023")
 					(unit 1)
 				)
 			)
@@ -6596,103 +6105,6 @@
 			(project "Wideband-LNA"
 				(path "/ca1d3916-a79a-40f2-ac9b-d40d7209574c"
 					(reference "#PWR06")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:D")
-		(at 210.82 74.93 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "f2ba0853-bcaf-4828-8e7f-54e86ba6b516")
-		(property "Reference" "D2"
-			(at 213.36 73.6599 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "D"
-			(at 213.36 76.1999 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
-			(at 210.82 74.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 210.82 74.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Diode"
-			(at 210.82 74.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "D"
-			(at 210.82 74.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=K 2=A"
-			(at 210.82 74.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C2902912"
-			(at 213.36 73.6599 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "5ccc006a-8747-4140-9c19-3f414748779b")
-		)
-		(pin "1"
-			(uuid "767efea0-1d69-4e3a-9005-a1d2ff244fdb")
-		)
-		(instances
-			(project ""
-				(path "/ca1d3916-a79a-40f2-ac9b-d40d7209574c"
-					(reference "D2")
 					(unit 1)
 				)
 			)
