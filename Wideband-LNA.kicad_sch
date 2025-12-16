@@ -2536,7 +2536,7 @@
 	)
 	(wire
 		(pts
-			(xy 177.8 106.68) (xy 189.23 106.68)
+			(xy 177.8 106.68) (xy 182.88 106.68)
 		)
 		(stroke
 			(width 0)
@@ -2586,7 +2586,7 @@
 	)
 	(wire
 		(pts
-			(xy 196.85 106.68) (xy 223.52 106.68)
+			(xy 190.5 106.68) (xy 223.52 106.68)
 		)
 		(stroke
 			(width 0)
@@ -3275,7 +3275,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 193.04 106.68 90)
+		(at 186.69 106.68 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3283,15 +3283,15 @@
 		(dnp no)
 		(uuid "2656889c-0aaf-40fc-95c1-da437772729d")
 		(property "Reference" "C1"
-			(at 189.992 108.204 90)
+			(at 183.642 108.204 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "330p"
-			(at 197.104 108.458 90)
+		(property "Value" "1nF"
+			(at 190.754 108.458 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3299,7 +3299,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 196.85 105.7148 0)
+			(at 190.5 105.7148 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3308,7 +3308,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 193.04 106.68 0)
+			(at 186.69 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3317,7 +3317,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 193.04 106.68 0)
+			(at 186.69 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3326,7 +3326,7 @@
 			)
 		)
 		(property "LCSC" "C1546"
-			(at 189.992 104.648 0)
+			(at 183.642 104.648 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3719,7 +3719,7 @@
 				)
 			)
 		)
-		(property "Value" "330p"
+		(property "Value" "1nF"
 			(at 138.684 104.648 90)
 			(effects
 				(font
@@ -4626,7 +4626,7 @@
 				)
 			)
 		)
-		(property "Value" "330p"
+		(property "Value" "1nF"
 			(at 189.738 96.774 0)
 			(effects
 				(font
