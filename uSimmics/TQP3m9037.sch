@@ -1,6 +1,6 @@
 <QucsStudio Schematic 5.8>
 <Properties>
-View=-271.98,-14.2591,1589.18,1326.18,0.762723,0,0
+View=-124.403,-13,1308.34,1326,1.8374,0,423
 Grid=10,10,1
 DataSet=*.dat
 DataDisplay=*.dpl
@@ -11,10 +11,10 @@ FrameText1=Drawn By:
 FrameText2=Date: @DATE@
 FrameText3=Revision:
 tune=L11: L|70 nH|1070 nH
-tune=C12: C|20 pF|200 pF
+tune=C12: C|20 pF|1020 pF
 tune=L5: L|70 nH|1070 nH
 tune=C9: C|100 pF|1070 pF
-tune=C11: C|20 pF|200 pF
+tune=C11: C|20 pF|470 pF
 tune=Eqn1: Cps|1p|63p
 </Properties>
 <Symbol>
@@ -24,7 +24,7 @@ tune=Eqn1: Cps|1p|63p
 GND * 1 320 220 0 0 0
 GND * 1 490 60 0 0 0
 SPfile Q1 1 320 190 -13 -40 0 "Z:/home/jeff/Documents/Wideband-LNA/datasheets/LNA/TQP3M9037-s-parameters/TQP3M9037_3.3V_Vdd_deembeded_sparam.S2P"0"2"0"polar"0"linear"0"short"0"none"0"block"0"SOT23"0
-C C9 1 430 40 -26 17 0 "470 pF"1"0"0""0"neutral"0"SMD0603"0
+C C9 1 430 40 -26 17 0 "330 pF"1"0"0""0"neutral"0"SMD0603"0
 GND * 1 490 260 0 0 0
 GND * 1 690 260 0 0 0
 Pac P2 1 800 230 18 -26 0 "2"1"50 Ω"1"0 dBm"0"1 GHz"0"26.85"0"con_2"0
@@ -47,10 +47,10 @@ R R2 1 490 230 15 -26 1 "Rpp"1"26.85"0"US"0"SMD0603"0
 R Rps 1 610 190 -25 18 2 "Rps"1"26.85"0"US"0"SMD0603"0
 C C13 1 610 150 -31 -48 0 "Cps"1"0"0""0"neutral"0"SMD0603"0
 L L11 1 100 230 14 -23 3 "470 nH"1"0"0""0"inductor_1mH"0
-C C11 1 430 190 -26 17 0 "33 pF"1"0"0""0"neutral"0"SMD0603"0
+C C11 1 430 190 -26 17 0 "330 pF"1"0"0""0"neutral"0"SMD0603"0
 L L5 1 370 130 14 -23 3 "470 nH"1"0"0""0"inductor_1mH"0
-C C12 1 230 190 -25 21 0 "270 pF"1"0"0""0"neutral"0"SMD0603"0
-Eqn Eqn1 1 1020 230 0 8 0 "Z0=50="1"AdB=9=dB"1"A1=10^(AdB/20)=linear voltage"1"A2=10^(AdB/10)=linear power"1"Rpp=Z0    * (A1+1) / (A1-1)=parallel resistor"1"Rps=Z0/2 * (A2-1) / A1=series resistor"1"Cps=10 p=series bypass cap"1"yes"0
+C C12 1 230 190 -25 21 0 "330 pF"1"0"0""0"neutral"0"SMD0603"0
+Eqn Eqn1 1 1030 230 0 8 0 "Z0=50="1"AdB=9=dB"1"Av=10^(AdB/20)=linear voltage"1"Ap=10^(AdB/10)=linear power"1"Rpp=Z0    * (Av+1) / (Av-1)=parallel resistor"1"Rps=Z0/2 * (Ap-1) / Av=series resistor"1"Cps=10 p=series bypass cap"1"yes"0
 </Components>
 <Wires>
 100 190 200 190
@@ -112,18 +112,24 @@ Eqn Eqn1 1 1020 230 0 8 0 "Z0=50="1"AdB=9=dB"1"A1=10^(AdB/20)=linear voltage"1"A
 	<Legend 240 -70 1>
 	<"dB(S[3,3])" "" * 1 3 0 0 0 1 "">
 	<"dB(S[4,3])" "" #ff0000 1 3 0 0 0 1 "">
+	  <Mkr 1.05316e+09 534 -376 3 1 0 0 0 50>
+	  <Mkr 1.27596e+09 544 -376 3 1 0 0 0 50>
 </Rect>
-<Smith 770 734 301 301 31 #c0c0c0 1 00 1 0 1 1 1 0 4 1 1 0 4 1 -1 -1 -1 "" "" "">
+<Tab 548 309 100 50 71 #c0c0c0 1 00 1 0 1 1 1 0 1 1 1 0 1 1 -1 -1 -1 "" "" "">
+	<"Rpp" "" #0000ff 1 3 1 0 0 0 "">
+	<"Rps" "" #0000ff 1 3 1 0 0 0 "">
+</Tab>
+<Tab 168 1119 100 50 71 #c0c0c0 1 00 1 0 1 1 1 0 1 1 1 0 1 1 -1 -1 -1 "" "" "">
+	<"Rpp" "" #0000ff 1 3 1 0 0 0 "">
+	<"Rps" "" #0000ff 1 3 1 0 0 0 "">
+</Tab>
+<Smith 790 734 301 301 31 #c0c0c0 1 00 1 0 1 1 1 0 4 1 1 0 4 1 -1 -1 -1 "" "" "">
 	<Legend 10 -80 1>
 	<"S[1,1]" "" #0000ff 1 3 0 0 0 1 "Input Match">
 	  <Mkr 5.01296e+07 100 -304 3 1 0 0 1 50>
 	  <Mkr 1.44966e+08 170 -114 3 1 0 0 1 50>
 	<"S[2,2]" "" #ff0000 1 3 0 0 0 1 "Output Match">
 </Smith>
-<Tab 1129 498 170 78 71 #c0c0c0 1 00 1 0 1 1 1 0 1 1 1 0 1 1 -1 -1 -1 "" "" "">
-	<"Rpp" "" #0000ff 1 3 1 0 0 0 "">
-	<"Rps" "" #0000ff 1 3 1 0 0 0 "">
-</Tab>
 </Diagrams>
 <Paintings>
 Text 264 31 20 #000000 0 Power
