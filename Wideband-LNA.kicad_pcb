@@ -10901,38 +10901,6 @@
 		(net 0)
 		(net_name "")
 		(layers "In1.Cu" "In2.Cu")
-		(uuid "9b34e5e6-8156-4613-bb6b-92c3ef7ff2c8")
-		(hatch edge 0.3)
-		(connect_pads yes
-			(clearance 0)
-		)
-		(min_thickness 0.25)
-		(filled_areas_thickness no)
-		(keepout
-			(tracks allowed)
-			(vias allowed)
-			(pads allowed)
-			(copperpour not_allowed)
-			(footprints allowed)
-		)
-		(placement
-			(enabled no)
-			(sheetname "/")
-		)
-		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
-		)
-		(polygon
-			(pts
-				(xy 108.903406 89.075) (xy 110.028406 89.075) (xy 110.028406 89.47) (xy 108.903406 89.47)
-			)
-		)
-	)
-	(zone
-		(net 0)
-		(net_name "")
-		(layers "In1.Cu" "In2.Cu")
 		(uuid "ad5a1997-d4e1-48de-84c1-fee99be008cc")
 		(hatch edge 0.3)
 		(connect_pads yes
@@ -11054,70 +11022,6 @@
 		(polygon
 			(pts
 				(xy 104.85 100.59) (xy 104.85 99.425) (xy 105.275 99.425) (xy 105.275 100.59)
-			)
-		)
-	)
-	(zone
-		(net 0)
-		(net_name "")
-		(layers "In1.Cu" "In2.Cu")
-		(uuid "ccbe56c9-ee2c-45db-a3dd-59829f4be1de")
-		(hatch edge 0.3)
-		(connect_pads yes
-			(clearance 0)
-		)
-		(min_thickness 0.25)
-		(filled_areas_thickness no)
-		(keepout
-			(tracks allowed)
-			(vias allowed)
-			(pads allowed)
-			(copperpour not_allowed)
-			(footprints allowed)
-		)
-		(placement
-			(enabled no)
-			(sheetname "/")
-		)
-		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
-		)
-		(polygon
-			(pts
-				(xy 108.92 89.81) (xy 109.605 89.81) (xy 109.605 90.205) (xy 108.92 90.205)
-			)
-		)
-	)
-	(zone
-		(net 0)
-		(net_name "")
-		(layers "In1.Cu" "In2.Cu")
-		(uuid "ce13928d-8682-4085-8dd0-fda087cefb8e")
-		(hatch edge 0.3)
-		(connect_pads yes
-			(clearance 0)
-		)
-		(min_thickness 0.25)
-		(filled_areas_thickness no)
-		(keepout
-			(tracks allowed)
-			(vias allowed)
-			(pads allowed)
-			(copperpour not_allowed)
-			(footprints allowed)
-		)
-		(placement
-			(enabled no)
-			(sheetname "/")
-		)
-		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
-		)
-		(polygon
-			(pts
-				(xy 109.65 89.765) (xy 109.65 89.37) (xy 110.025 89.37) (xy 110.025 89.765)
 			)
 		)
 	)
