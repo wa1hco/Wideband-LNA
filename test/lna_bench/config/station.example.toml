@@ -1,0 +1,29 @@
+[station]
+name = "Bench 1"
+output_dir = "output"
+database_path = "output/lna_bench.sqlite3"
+
+[visa]
+resource_name = "USB0::0x03EB::0x2065::GPIB_08_950323130363515180D0::INSTR"
+backend = ""
+timeout_ms = 30000
+read_termination = "\n"
+write_termination = "\n"
+
+[sweep]
+start_hz = 1000000000.0
+stop_hz = 2000000000.0
+points = 201
+key_frequencies_hz = [1000000000.0, 1500000000.0, 2000000000.0]
+
+[commands]
+identify_query = "*IDN?"
+opc_query = "*OPC?"
+prepare_measurement_commands = [
+    "INIT:CONT OFF",
+    "ABOR",
+    "INIT",
+]
+nf_data_query = "FETCh:NFIGure?"
+gain_data_query = "FETCh:GAIN?"
+frequency_data_query = ""
