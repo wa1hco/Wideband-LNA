@@ -33,6 +33,7 @@ fp-info-cache
 
 # generated for jlcpcb
 production/
+jlcpcb/
 
 # test data
 Pictures/
