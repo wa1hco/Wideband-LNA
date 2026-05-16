@@ -1,0 +1,20 @@
+# Python caches and environments
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.venv/
+
+# Build and packaging artifacts
+build/
+dist/
+*.egg-info/
+
+# Local bench runtime artifacts
+output/
+
+# Local station-specific config
+config/station.toml
+
+# Editor-local settings
+.vscode/
