@@ -1,6 +1,6 @@
 <QucsStudio Schematic 5.8>
 <Properties>
-View=-414.734,-77.7923,1289.61,1266.77,0.8501,0,0
+View=-336.04,-156.884,1431,1326,1.11896,0,0
 Grid=10,10,1
 DataSet=*.dat
 DataDisplay=*.dpl
@@ -10,21 +10,14 @@ FrameText0=Title \n @PATH@@FILE@
 FrameText1=Drawn By:
 FrameText2=Date: @DATE@
 FrameText3=Revision:
-tune=L11: L|70 nH|1070 nH
-tune=C12: C|20 pF|1020 pF
-tune=L5: L|70 nH|1070 nH
-tune=C9: C|100 pF|1070 pF
-tune=C11: C|20 pF|470 pF
-tune=Eqn1: Cps|1p|63p
+tune=Eqn2: Ccom|90 pF|2090 pF
 </Properties>
 <Symbol>
 </Symbol>
 <Components>
-.SP SP1 1 890 120 0 9 0 "log"1"10 MHz"1"6 GHz"1"501"1"no"0"1"0"2"0"none"0
 GND * 1 320 220 0 0 0
 GND * 1 490 60 0 0 0
 SPfile Q1 1 320 190 -13 -40 0 "Z:/home/jeff/Documents/Wideband-LNA/datasheets/LNA/TQP3M9037-s-parameters/TQP3M9037_3.3V_Vdd_deembeded_sparam.S2P"0"2"0"polar"0"linear"0"short"0"none"0"block"0"SOT23"0
-C C9 1 430 40 -26 17 0 "330 pF"1"0"0""0"neutral"0"SMD0603"0
 GND * 1 490 260 0 0 0
 GND * 1 690 260 0 0 0
 Pac P2 1 800 230 18 -26 0 "2"1"50 Ω"1"0 dBm"0"1 GHz"0"26.85"0"con_2"0
@@ -46,11 +39,17 @@ C C14 1 230 950 -31 -48 0 "Cps"1"0"0""0"neutral"0"SMD0603"0
 R R2 1 490 230 15 -26 1 "Rpp"1"26.85"0"US"0"SMD0603"0
 R Rps 1 610 190 -25 18 2 "Rps"1"26.85"0"US"0"SMD0603"0
 C C13 1 610 150 -31 -48 0 "Cps"1"0"0""0"neutral"0"SMD0603"0
-L L11 1 100 230 14 -23 3 "330 nH"1"0"0""0"inductor_1mH"0
-C C11 1 430 190 -26 17 0 "330 pF"1"0"0""0"neutral"0"SMD0603"0
-L L5 1 370 130 14 -23 3 "330 nH"1"0"0""0"inductor_1mH"0
-C C12 1 230 190 -25 21 0 "330 pF"1"0"0""0"neutral"0"SMD0603"0
-Eqn Eqn1 1 1030 230 0 8 0 "Z0=50="1"AdB=10=dB"1"Av=10^(AdB/20)=linear voltage"1"Ap=10^(AdB/10)=linear power"1"Rpp=Z0    * (Av+1) / (Av-1)=parallel resistor"1"Rps=Z0/2 * (Ap-1) / Av=series resistor"1"Cps=10 p=series bypass cap"1"yes"0
+L L5 1 370 130 14 -23 3 "Lcom"1"0"0""0"inductor_1mH"0
+C C9 1 430 40 -26 17 0 "Ccom"1"0"0""0"neutral"0"SMD0603"0
+L L11 1 100 230 14 -23 3 "Lcom"1"0"0""0"inductor_1mH"0
+C C12 1 230 190 -25 21 0 "Ccom"1"0"0""0"neutral"0"SMD0603"0
+C C11 1 430 190 -26 17 0 "Ccom"1"0"0""0"neutral"0"SMD0603"0
+GND * 1 810 60 0 0 0
+L L12 1 690 130 14 -23 3 "Lcom"1"0"0""0"inductor_1mH"0
+C C15 1 750 40 -26 17 0 "Ccom"1"0"0""0"neutral"0"SMD0603"0
+.SP SP1 1 890 90 0 9 0 "log"1"10 MHz"1"6 GHz"1"501"1"no"0"1"0"2"0"none"0
+Eqn Eqn1 1 1040 220 0 8 0 "Z0=50="1"AdB=10=dB"1"Av=10^(AdB/20)=linear voltage"1"Ap=10^(AdB/10)=linear power"1"Rpp=Z0    * (Av+1) / (Av-1)=parallel resistor"1"Rps=Z0/2 * (Ap-1) / Av=series resistor"1"Cps=10 p=series bypass cap"1"yes"0
+Eqn Eqn2 1 1290 130 0 8 0 "Ccom=470 pF="1"Lcom=560 nH="1"C9val=Ccom="1"C11val=Ccom="1"C12val=Ccom="1"C15val=Ccom="1"L11val=Lcom="1"L5val=Lcom="1"L12val=Lcom="1"yes"0
 </Components>
 <Wires>
 100 190 200 190
@@ -92,20 +91,25 @@ Eqn Eqn1 1 1030 230 0 8 0 "Z0=50="1"AdB=10=dB"1"Av=10^(AdB/20)=linear voltage"1"
 420 990 420 1000
 10 990 10 1000
 10 990 110 990
+690 160 690 190
+690 40 690 100
+690 40 720 40
+780 40 810 40
+810 40 810 60
 </Wires>
 <Diagrams>
 <Rect 26 746 653 367 31 #c0c0c0 1 10 1 0 1 0 0 -40 5 0 0 -10 5 30 -1 -1 -1 "" "" "">
-	<Legend 240 -70 1>
+	<Legend 510 -70 1>
 	<"dB(S[1,1])" "" #0000ff 1 3 0 0 0 1 "Input RL">
 	  <Mkr 2.32801e+09 494 -356 3 1 0 0 0 50>
 	  <Mkr 1.29239e+09 324 -356 3 1 0 0 0 50>
-	  <Mkr 5.01296e+07 74 -416 3 1 0 0 0 50>
 	  <Mkr 1.44966e+08 234 -416 3 1 0 0 0 50>
+	  <Mkr 5.01296e+07 34 -416 3 1 0 0 0 50>
 	<"dB(S[2,1])" "" #ff0000 1 3 0 0 1 1 "Gain">
 	  <Mkr 2.32801e+09 504 -146 3 1 0 0 0 50>
 	  <Mkr 1.29239e+09 344 -146 3 1 0 0 0 50>
-	  <Mkr 5.01296e+07 24 -126 3 1 0 0 0 50>
-	  <Mkr 1.44966e+08 274 -196 3 1 0 0 0 50>
+	  <Mkr 1.44966e+08 234 -226 3 1 0 0 0 50>
+	  <Mkr 5.01296e+07 44 -166 3 1 0 0 0 50>
 	<"dB(S[2,2])" "" #ff00ff 1 3 0 0 0 1 "Output RL">
 </Rect>
 <Rect 596 1226 653 367 31 #c0c0c0 1 10 1 1e+07 1 6e+09 1 -0.063947 0.2 0.8 1 -1 0.5 1 -1 -1 -1 "" "" "">
@@ -132,7 +136,8 @@ Eqn Eqn1 1 1030 230 0 8 0 "Z0=50="1"AdB=10=dB"1"Av=10^(AdB/20)=linear voltage"1"
 </Smith>
 </Diagrams>
 <Paintings>
-Text 264 31 20 #000000 0 Power
-Text 34 31 20 #000000 0 Use ideal components
 Text 264 121 16 #000000 0 TQP3M9037
+Text 4 31 20 #000000 0 Sim with ideal components
+Text 294 51 20 #000000 0 Power
+Text 604 41 20 #000000 0 Bias-T
 </Paintings>
