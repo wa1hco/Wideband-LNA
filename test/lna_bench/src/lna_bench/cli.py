@@ -10,10 +10,22 @@ from lna_bench.models import MeasurementSummary, RunRecord
 from lna_bench.process_guard import process_guard
 from lna_bench.reporting import HtmlReportGenerator, JsonArtifactWriter
 from lna_bench.storage import RunRepository
-from lna_bench.transport import VisaResourceSettings, VisaTransport
+from lna_bench.transport import MockTransport, VisaResourceSettings, VisaTransport
 
 
-def _build_transport(config: AppConfig) -> VisaTransport:
+def _get_doc_dir() -> Path | None:
+    """Return the path to the doc directory (test/lna_bench/doc)."""
+    project_root = Path(__file__).parent.parent.parent.parent.parent
+    doc_dir = project_root / "doc"
+    return doc_dir if doc_dir.exists() else None
+
+def _build_transport(config: AppConfig, mock: bool = False) -> "VisaTransport | MockTransport":
+    if mock:
+        return MockTransport(
+            start_hz=config.sweep.start_hz,
+            stop_hz=config.sweep.stop_hz,
+            points=config.sweep.points,
+        )
     settings = VisaResourceSettings(
         resource_name=config.visa.resource_name,
         backend=config.visa.backend,
@@ -68,7 +80,7 @@ def _build_summary_with_key_frequencies(record: RunRecord, key_frequencies_hz: l
 
 def _cmd_probe(args: argparse.Namespace) -> int:
     config = load_config(args.config)
-    transport = _build_transport(config)
+    transport = _build_transport(config, mock=getattr(args, "mock", False))
     controller = _build_controller(config, transport)
     with _instrument_command_guard(config):
         with transport:
@@ -83,7 +95,7 @@ def _cmd_probe(args: argparse.Namespace) -> int:
 
 def _cmd_verify_config(args: argparse.Namespace) -> int:
     config = load_config(args.config)
-    transport = _build_transport(config)
+    transport = _build_transport(config, mock=getattr(args, "mock", False))
     controller = _build_controller(config, transport)
 
     with _instrument_command_guard(config):
@@ -138,7 +150,8 @@ def _cmd_regen_report(args: argparse.Namespace) -> int:
         if not args.all:
             runs = runs[:1]  # latest only
 
-    report_generator = HtmlReportGenerator(config.station.output_dir)
+    doc_dir = _get_doc_dir()
+    report_generator = HtmlReportGenerator(config.station.output_dir, doc_dir=doc_dir)
     for run in runs:
         run.summary = _build_summary_with_key_frequencies(run, config.sweep.key_frequencies_hz)
         previous = repository.get_run_by_id(run.previous_run_id) if run.previous_run_id else None
@@ -175,7 +188,7 @@ def _cmd_record(args: argparse.Namespace) -> int:
     previous_run = repository.get_latest_run(args.serial)
     previous_run_id = previous_run.run_id if previous_run is not None else None
 
-    transport = _build_transport(config)
+    transport = _build_transport(config, mock=getattr(args, "mock", False))
     controller = _build_controller(config, transport)
 
     with _instrument_command_guard(config):
@@ -206,12 +219,17 @@ def _cmd_record(args: argparse.Namespace) -> int:
         nf_trace=capture.nf_trace,
         gain_trace=capture.gain_trace,
         summary=capture.summary,
+        operator=getattr(args, "operator", ""),
+        calibration_date=config.calibration.calibration_date,
+        calibration_method=config.calibration.calibration_method,
+        fixture_loss_db=config.calibration.fixture_loss_db,
     )
     repository.save_run(record)
 
     artifact_writer = JsonArtifactWriter(config.station.output_dir)
     data_path = artifact_writer.write_run_data(record)
-    report_generator = HtmlReportGenerator(config.station.output_dir)
+    doc_dir = _get_doc_dir()
+    report_generator = HtmlReportGenerator(config.station.output_dir, doc_dir=doc_dir)
     report_path = report_generator.write_report(record, previous_record=previous_run)
     repository.update_report_path(record.run_id, str(report_path))
 
@@ -221,9 +239,93 @@ def _cmd_record(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cmd_ready(args: argparse.Namespace) -> int:
+    """Preflight check: GPIB connected, instrument reachable, calibration valid, config checks pass."""
+    config = load_config(args.config)
+    checks_passed = 0
+    checks_failed = 0
+
+    print("\n=== PREFLIGHT READY CHECK ===")
+    print(f"Station: {config.station.name}")
+    print(f"Output: {config.station.output_dir}")
+    print(f"Database: {config.station.database_path}")
+
+    # Check 1: GPIB and instrument reachability
+    print("\n[1/3] Probing VISA resource...")
+    transport = _build_transport(config, mock=args.mock)
+    controller = _build_controller(config, transport)
+    try:
+        with _instrument_command_guard(config):
+            with transport:
+                controller.acquire_computer_control()
+                try:
+                    instrument_id = controller.identify()
+                    print(f"  OK Instrument: {instrument_id}")
+                    checks_passed += 1
+                finally:
+                    controller.release_to_user_control()
+    except Exception as e:
+        print(f"  FAIL GPIB probe failed: {e}")
+        checks_failed += 1
+
+    # Check 2: Configuration verification
+    print("\n[2/3] Verifying instrument configuration...")
+    transport2 = _build_transport(config, mock=args.mock)
+    controller2 = _build_controller(config, transport2)
+    try:
+        with _instrument_command_guard(config):
+            with transport2:
+                controller2.acquire_computer_control()
+                try:
+                    controller2.apply_configuration()
+                    results = controller2.verify_configuration()
+                    failed = [r for r in results if not r.passed]
+                    if failed:
+                        print("  FAIL Configuration check(s) failed:")
+                        for result in failed:
+                            print(f"    - {result.name}: expected {result.expected!r}, got {result.response!r}")
+                        checks_failed += 1
+                    else:
+                        print(f"  OK All configuration checks passed ({len(results)} checks)")
+                        checks_passed += 1
+                finally:
+                    controller2.release_to_user_control()
+    except Exception as e:
+        print(f"  FAIL Configuration verification failed: {e}")
+        checks_failed += 1
+
+    # Check 3: Calibration metadata
+    print("\n[3/3] Calibration status...")
+    if config.calibration.calibration_date:
+        print(f"  OK Calibration: {config.calibration.calibration_date}")
+        print(f"    Method: {config.calibration.calibration_method}")
+        print(f"    Fixture loss: {config.calibration.fixture_loss_db} dB")
+        checks_passed += 1
+    else:
+        print("  WARN Calibration date not set in config")
+        checks_failed += 1
+
+    print(f"\n=== SUMMARY: {checks_passed}/3 passed ===")
+    if checks_failed == 0:
+        print("Station is ready for testing.")
+        return 0
+    else:
+        print("Fix issues above before proceeding.")
+        return 1
+
+
+def _cmd_next_dut(args: argparse.Namespace) -> int:
+    """Convenience command: shows next unit info."""
+    print("\n=== NEXT DUT ===")
+    print("Station is ready for the next unit.")
+    print("Use: lna-bench --config config/station.toml record --serial SN_XXX ...")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="lna-bench", description="LNA characterization bench tools")
     parser.add_argument("--config", default="config/station.toml", help="Path to station TOML config")
+    parser.add_argument("--mock", action="store_true", help="Use synthetic data instead of real GPIB instrument (no GPIB required)")
 
     subparsers = parser.add_subparsers(dest="command", required=True)
 
@@ -247,6 +349,7 @@ def build_parser() -> argparse.ArgumentParser:
     record.add_argument("--serial", required=True, help="DUT serial number")
     record.add_argument("--preamp-version", required=True, help="Preamp revision or build variant")
     record.add_argument("--noise-head-id", required=True, help="Noise head identifier")
+    record.add_argument("--operator", default="", help="Operator name (optional)")
     record.add_argument("--notes", required=True, help="Notes for the run or retest")
     record.add_argument("--retest", action="store_true", help="Mark this run as a retest")
     record.set_defaults(func=_cmd_record)
@@ -257,6 +360,12 @@ def build_parser() -> argparse.ArgumentParser:
     regen_group.add_argument("--serial", help="Serial number (regenerates latest run, or all with --all)")
     regen.add_argument("--all", action="store_true", help="Regenerate all runs for the serial number")
     regen.set_defaults(func=_cmd_regen_report)
+
+    ready = subparsers.add_parser("ready", help="Run preflight checks (GPIB, config, calibration)")
+    ready.set_defaults(func=_cmd_ready)
+
+    next_dut = subparsers.add_parser("next-dut", help="Show next unit template (batch mode helper)")
+    next_dut.set_defaults(func=_cmd_next_dut)
 
     return parser
 
