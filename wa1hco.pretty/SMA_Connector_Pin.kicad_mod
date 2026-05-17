@@ -1,0 +1,190 @@
+(footprint "SMA_Connector_Pin"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(descr "SMT Test Point- Micro Miniature 5015, http://www.keyelco.com/product-pdf.cfm?p=1353")
+	(tags "Test Point")
+	(property "Reference" "REF**"
+		(at 0 -3.75 0)
+		(layer "F.SilkS")
+		(uuid "97e20a33-23ce-488e-8d88-e4e3f141dd6e")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "SMA_Connector_Pin"
+		(at 0 3.5 0)
+		(layer "F.Fab")
+		(uuid "e3bfdba9-fc7f-4cb1-90e4-1ef435b3ee9a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at 0.000701 -1.349948 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "b11db312-52ce-4afb-82b2-f1959491eeea")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0.000701 -1.349948 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "883ee3a2-6507-4296-9008-0f3e694117e6")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0.000701 -1.349948 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "e8d91835-6ac2-4a75-9f8e-f101c371e4b3")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -1.5 -2.4)
+		(end 2 -2.4)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "fcc8e57b-fa23-4e04-84ae-8e91687e88dc")
+	)
+	(fp_line
+		(start -1.5 2.4)
+		(end -1.5 -2.4)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "eb2a2605-8799-486c-80a1-3ef4208ae5dd")
+	)
+	(fp_line
+		(start 2 -2.4)
+		(end 2 2.4)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "9a13119f-d603-4882-8850-02a6ef34b998")
+	)
+	(fp_line
+		(start 2 2.4)
+		(end -1.5 2.4)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "273e721e-97b3-4798-bf2e-e94ccccaedf5")
+	)
+	(fp_line
+		(start -2.001224 2.710981)
+		(end -1.998775 -2.699948)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "da70176b-1e9e-41ee-8db4-1ff77eeb8f6c")
+	)
+	(fp_line
+		(start -1.998775 -2.699948)
+		(end 2.501224 -2.699948)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "4861bfa2-c1cf-4d95-9fef-5eb446cfcd6d")
+	)
+	(fp_line
+		(start 2.498775 2.710981)
+		(end -2.001224 2.710981)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "3236018b-ad78-4daf-81c5-041a532114d2")
+	)
+	(fp_line
+		(start 2.501224 -2.699948)
+		(end 2.498775 2.710981)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "b0040e9b-8366-4587-acaa-18f85e3ec3cd")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "a8dba3b9-a8ee-4a06-9484-ff444f7627ca")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.09)
+			)
+		)
+	)
+	(pad "" smd rect
+		(at 0.25 -1.35)
+		(size 2.5 1)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "6d1725ac-a682-467a-b920-d0030bba137f")
+	)
+	(pad "" smd rect
+		(at 0.25 1.35 180)
+		(size 2.5 1)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "5aa238ad-23ac-4536-a6a4-2afdaa9fbbb9")
+	)
+	(pad "1" smd rect
+		(at -0.75 0 90)
+		(size 1.710926 0.500874)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "d3ce81e7-7256-438b-8043-0f944e3c523c")
+	)
+	(model "${KICAD8_3DMODEL_DIR}/TestPoint.3dshapes/TestPoint_Keystone_5015_Micro-Minature.wrl"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

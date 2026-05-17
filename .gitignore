@@ -32,5 +32,8 @@ fp-info-cache
 *.csv
 
 # generated for jlcpcb
-jlcpcb/
 production/
+jlcpcb/
+
+# test data
+Pictures/
