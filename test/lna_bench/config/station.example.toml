@@ -1,29 +1,63 @@
 [station]
 name = "Bench 1"
-output_dir = "output"
-database_path = "output/lna_bench.sqlite3"
+output_dir = "reports"
+database_path = "reports/lna_bench.sqlite3"
 
 [visa]
-resource_name = "USB0::0x03EB::0x2065::GPIB_08_950323130363515180D0::INSTR"
+resource_name = "GPIB0::28::INSTR"
 backend = ""
-timeout_ms = 30000
+timeout_ms = 300000
 read_termination = "\n"
 write_termination = "\n"
 
 [sweep]
-start_hz = 1000000000.0
-stop_hz = 2000000000.0
-points = 201
-key_frequencies_hz = [1000000000.0, 1500000000.0, 2000000000.0]
+# 10 MHz – 3 GHz at 401 points covers all amateur VHF/UHF/microwave bands
+start_hz = 10000000.0
+stop_hz = 3000000000.0
+points = 401
+key_frequencies_hz = [
+    50000000.0,
+    144000000.0,
+    222000000.0,
+    432000000.0,
+    903000000.0,
+    1296000000.0,
+    2304000000.0,
+]
 
 [commands]
 identify_query = "*IDN?"
-opc_query = "*OPC?"
-prepare_measurement_commands = [
-    "INIT:CONT OFF",
-    "ABOR",
-    "INIT",
-]
-nf_data_query = "FETCh:NFIGure?"
-gain_data_query = "FETCh:GAIN?"
+# opc_query left blank: N8973A does not require OPC polling between trigger and fetch
+opc_query = ""
+# prepare_measurement_commands left empty: INIT:CONT ON keeps the instrument
+# sweeping continuously; no explicit trigger/abort cycle is needed.
+prepare_measurement_commands = []
+# FETC:CORR:* returns temperature-corrected (calibrated) NF and gain data
+nf_data_query = "FETC:CORR:NFIG?"
+gain_data_query = "FETC:CORR:GAIN?"
 frequency_data_query = ""
+
+[control]
+acquire_commands = []
+release_commands = []
+release_to_local = true
+
+[configuration]
+# Put the instrument into continuous-sweep mode before each run.
+apply_commands = ["INIT:CONT ON"]
+fail_on_mismatch = true
+
+[[configuration.verify_checks]]
+name = "continuous sweep enabled"
+query = "INIT:CONT?"
+expected = "1"
+match = "exact"
+
+[runtime]
+single_instance = true
+lock_stale_seconds = 1800
+
+[calibration]
+calibration_date = "2026-05-17"
+calibration_method = "N8973A factory calibration"
+fixture_loss_db = 0.0

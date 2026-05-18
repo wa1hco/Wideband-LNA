@@ -350,7 +350,7 @@ def build_parser() -> argparse.ArgumentParser:
     record.add_argument("--preamp-version", required=True, help="Preamp revision or build variant")
     record.add_argument("--noise-head-id", required=True, help="Noise head identifier")
     record.add_argument("--operator", default="", help="Operator name (optional)")
-    record.add_argument("--notes", required=True, help="Notes for the run or retest")
+    record.add_argument("--notes", default="", help="Notes for the run or retest")
     record.add_argument("--retest", action="store_true", help="Mark this run as a retest")
     record.set_defaults(func=_cmd_record)
 

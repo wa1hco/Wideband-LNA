@@ -115,3 +115,82 @@ class VisaTransport:
         except Exception:
             # Some backends/resources do not support REN control; ignore and continue.
             return
+
+
+import math
+
+
+class MockTransport:
+    """Synthetic GPIB transport for offline development and report testing.
+
+    Returns plausible NF and gain curves for a wideband LNA without
+    any real instrument connected.
+    """
+
+    def __init__(self, start_hz: float = 1e9, stop_hz: float = 2e9, points: int = 201) -> None:
+        self._start_hz = start_hz
+        self._stop_hz = stop_hz
+        self._points = points
+
+    def open(self) -> None:
+        pass
+
+    def close(self) -> None:
+        pass
+
+    def __enter__(self) -> "MockTransport":
+        return self
+
+    def __exit__(self, exc_type: object, exc: object, tb: object) -> None:
+        pass
+
+    def list_resources(self) -> tuple[str, ...]:
+        return ("MOCK::0::INSTR",)
+
+    def query(self, command: str) -> str:
+        command = command.strip().upper()
+        if "*IDN?" in command:
+            return "MOCK INSTRUMENTS,N8973A-SIM,000000,A.07.00"
+        if "NFIG" in command:
+            return self._mock_nf_csv()
+        if "GAIN" in command:
+            return self._mock_gain_csv()
+        if "*OPC?" in command:
+            return "1"
+        if "INIT:CONT?" in command:
+            return "1"
+        return "0"
+
+    def write(self, command: str) -> None:
+        pass  # Swallow all writes silently
+
+    def read_raw(self) -> bytes:
+        return b""
+
+    def release_to_local(self) -> None:
+        pass
+
+    def _freqs(self) -> list[float]:
+        step = (self._stop_hz - self._start_hz) / (self._points - 1)
+        return [self._start_hz + step * i for i in range(self._points)]
+
+    def _mock_nf_csv(self) -> str:
+        """Return a realistic NF curve: ~0.8 dB at low end, rising to ~1.5 dB at high end."""
+        freqs = self._freqs()
+        span = self._stop_hz - self._start_hz or 1.0
+        values = [
+            0.8 + 0.7 * ((f - self._start_hz) / span) + 0.05 * math.sin(6 * math.pi * (f - self._start_hz) / span)
+            for f in freqs
+        ]
+        return ",".join(f"{v:.4f}" for v in values)
+
+    def _mock_gain_csv(self) -> str:
+        """Return a realistic gain curve: ~22 dB flat with slight rolloff at edges."""
+        freqs = self._freqs()
+        span = self._stop_hz - self._start_hz or 1.0
+        values = [
+            22.0 - 1.5 * ((f - self._start_hz) / span) ** 2 + 0.2 * math.sin(4 * math.pi * (f - self._start_hz) / span)
+            for f in freqs
+        ]
+        return ",".join(f"{v:.4f}" for v in values)
+
