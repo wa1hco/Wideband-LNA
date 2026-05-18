@@ -1585,7 +1585,7 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "TQP3M9037 19x19 V3.5"
+	(text "TQP3M9037 19x19 V3.4"
 		(exclude_from_sim no)
 		(at 210.566 180.594 0)
 		(effects
@@ -1597,7 +1597,7 @@
 	)
 	(text "Bias T"
 		(exclude_from_sim no)
-		(at 241.3 92.71 0)
+		(at 238.506 93.218 0)
 		(effects
 			(font
 				(face "Courier 10 Pitch")
@@ -1707,7 +1707,7 @@
 	)
 	(text "Vs = 7 to 15V"
 		(exclude_from_sim no)
-		(at 140.462 92.964 0)
+		(at 144.018 92.71 0)
 		(effects
 			(font
 				(face "Courier 10 Pitch")
