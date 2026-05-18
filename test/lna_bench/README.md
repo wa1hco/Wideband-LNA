@@ -59,6 +59,30 @@ List prior runs for a serial number:
 lna-bench --config config/station.toml history --serial SN123
 ```
 
+## Streamlit GUI
+
+The project includes a Streamlit front end for day-to-day bench operation.
+
+Install dependencies and launch:
+
+```powershell
+pip install -e .
+lna-bench-gui
+```
+
+Or launch directly with Streamlit:
+
+```powershell
+streamlit run src/lna_bench/gui_streamlit.py
+```
+
+The GUI exposes:
+
+- `ready`, `probe`, and `verify-config`
+- `record` form (serial, preamp version, noise head ID, operator, notes)
+- `history` and `regen-report`
+- a `Mock mode` toggle for offline operation
+
 ## Batch Workflow (25 LNA)
 
 Recommended preparation before a 25-unit run:

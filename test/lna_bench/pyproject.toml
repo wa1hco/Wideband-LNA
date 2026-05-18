@@ -10,10 +10,12 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "pyvisa>=1.14",
+    "streamlit>=1.35",
 ]
 
 [project.scripts]
 lna-bench = "lna_bench.cli:main"
+lna-bench-gui = "lna_bench.gui_streamlit:launch"
 
 [tool.setuptools]
 package-dir = {"" = "src"}

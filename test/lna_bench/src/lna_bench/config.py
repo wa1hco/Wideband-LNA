@@ -49,6 +49,13 @@ class InstrumentControlConfig:
 
 
 @dataclass(slots=True)
+class CalibrationConfig:
+    calibration_date: str
+    calibration_method: str
+    fixture_loss_db: float
+
+
+@dataclass(slots=True)
 class ConfigurationCheck:
     name: str
     query: str
@@ -78,6 +85,7 @@ class AppConfig:
     control: InstrumentControlConfig
     configuration: InstrumentConfigurationConfig
     runtime: RuntimeConfig
+    calibration: CalibrationConfig
 
 
 def _expand_path(value: str, base_dir: Path) -> Path:
@@ -106,6 +114,7 @@ def load_config(path: str | Path) -> AppConfig:
     control_section = raw.get("control", {})
     configuration_section = raw.get("configuration", {})
     runtime_section = raw.get("runtime", {})
+    calibration_section = raw.get("calibration", {})
 
     station = StationInfo(
         name=str(_get_required(station_section, "name")),
@@ -170,6 +179,12 @@ def load_config(path: str | Path) -> AppConfig:
         lock_stale_seconds=int(runtime_section.get("lock_stale_seconds", 1800)),
     )
 
+    calibration = CalibrationConfig(
+        calibration_date=str(calibration_section.get("calibration_date", "")),
+        calibration_method=str(calibration_section.get("calibration_method", "")),
+        fixture_loss_db=float(calibration_section.get("fixture_loss_db", 0.0)),
+    )
+
     return AppConfig(
         station=station,
         visa=visa,
@@ -178,4 +193,5 @@ def load_config(path: str | Path) -> AppConfig:
         control=control,
         configuration=configuration,
         runtime=runtime,
+        calibration=calibration,
     )

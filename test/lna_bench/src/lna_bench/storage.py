@@ -31,6 +31,10 @@ class RunRepository:
                     nf_trace_json TEXT NOT NULL,
                     gain_trace_json TEXT NOT NULL,
                     summary_json TEXT NOT NULL,
+                    operator TEXT DEFAULT '',
+                    calibration_date TEXT DEFAULT '',
+                    calibration_method TEXT DEFAULT '',
+                    fixture_loss_db REAL DEFAULT 0.0,
                     report_path TEXT
                 )
                 """
@@ -59,8 +63,12 @@ class RunRepository:
                     nf_trace_json,
                     gain_trace_json,
                     summary_json,
+                    operator,
+                    calibration_date,
+                    calibration_method,
+                    fixture_loss_db,
                     report_path
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
                     record.run_id,
@@ -76,6 +84,10 @@ class RunRepository:
                     json.dumps(record.nf_trace.to_dict()),
                     json.dumps(record.gain_trace.to_dict()),
                     json.dumps(record.summary.to_dict()),
+                    record.operator,
+                    record.calibration_date,
+                    record.calibration_method,
+                    record.fixture_loss_db,
                     record.report_path,
                 ),
             )
@@ -95,7 +107,8 @@ class RunRepository:
         self.initialize()
         query = (
             "SELECT run_id, serial_number, preamp_version, noise_head_id, station_name, instrument_id, notes, "
-            "timestamp_utc, is_retest, previous_run_id, nf_trace_json, gain_trace_json, summary_json, report_path "
+            "timestamp_utc, is_retest, previous_run_id, nf_trace_json, gain_trace_json, summary_json, operator, "
+            "calibration_date, calibration_method, fixture_loss_db, report_path "
             "FROM runs WHERE run_id = ?"
         )
         with sqlite3.connect(self._db_path) as conn:
@@ -107,7 +120,8 @@ class RunRepository:
         self.initialize()
         query = (
             "SELECT run_id, serial_number, preamp_version, noise_head_id, station_name, instrument_id, notes, "
-            "timestamp_utc, is_retest, previous_run_id, nf_trace_json, gain_trace_json, summary_json, report_path "
+            "timestamp_utc, is_retest, previous_run_id, nf_trace_json, gain_trace_json, summary_json, operator, "
+            "calibration_date, calibration_method, fixture_loss_db, report_path "
             "FROM runs WHERE serial_number = ? ORDER BY timestamp_utc DESC"
         )
         parameters: list[object] = [serial_number]
@@ -134,5 +148,9 @@ class RunRepository:
             nf_trace=SweepTrace.from_dict(json.loads(str(row[10]))),
             gain_trace=SweepTrace.from_dict(json.loads(str(row[11]))),
             summary=MeasurementSummary.from_dict(json.loads(str(row[12]))),
-            report_path=str(row[13]) if row[13] else None,
+            operator=str(row[13]) if len(row) > 13 else "",
+            calibration_date=str(row[14]) if len(row) > 14 else "",
+            calibration_method=str(row[15]) if len(row) > 15 else "",
+            fixture_loss_db=float(row[16]) if len(row) > 16 else 0.0,
+            report_path=str(row[17]) if len(row) > 17 and row[17] else None,
         )

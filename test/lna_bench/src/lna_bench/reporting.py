@@ -5,6 +5,7 @@ from html import escape
 from pathlib import Path
 
 from lna_bench.models import RunRecord, SweepTrace
+from lna_bench.reporting_compact import render_compact_report
 
 
 def _format_frequency_label(frequency_hz: float) -> str:
@@ -84,8 +85,9 @@ def _svg_plot(
 
 
 class HtmlReportGenerator:
-    def __init__(self, output_dir: str | Path) -> None:
+    def __init__(self, output_dir: str | Path, doc_dir: "str | Path | None" = None) -> None:
         self._output_dir = Path(output_dir)
+        self._doc_dir = Path(doc_dir) if doc_dir is not None else None
 
     def write_report(self, record: RunRecord, previous_record: RunRecord | None = None) -> Path:
         reports_dir = self._output_dir / "reports" / record.serial_number
@@ -96,110 +98,7 @@ class HtmlReportGenerator:
         return report_path
 
     def _render(self, record: RunRecord, previous_record: RunRecord | None) -> str:
-        comparison_html = ""
-        if previous_record is not None:
-            comparison_html = (
-                "<section><h2>Previous Run</h2>"
-                f"<p>Previous run ID: {escape(previous_record.run_id)}<br>"
-                f"Previous timestamp: {escape(previous_record.timestamp_utc.isoformat())}</p>"
-                "</section>"
-            )
-
-        key_points = "".join(
-            f"<tr><td>{escape(freq)}</td><td>{values['nf_db']:.3f}</td><td>{values['gain_db']:.3f}</td></tr>"
-            for freq, values in record.summary.key_points.items()
-        )
-
-        return f"""
-<!DOCTYPE html>
-<html lang=\"en\">
-<head>
-  <meta charset=\"utf-8\" />
-  <title>LNA Report {escape(record.serial_number)}</title>
-  <style>
-    :root {{
-      color-scheme: light;
-      --bg: #f8fafc;
-      --ink: #0f172a;
-      --muted: #475569;
-      --card: #ffffff;
-      --line: #cbd5e1;
-      --accent: #0369a1;
-      --accent-2: #166534;
-    }}
-    body {{
-      margin: 0;
-      padding: 24px;
-      font-family: "Segoe UI", Tahoma, sans-serif;
-      background: linear-gradient(180deg, #e0f2fe 0%, var(--bg) 180px);
-      color: var(--ink);
-    }}
-    main {{ max-width: 1100px; margin: 0 auto; }}
-    .card {{
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 20px;
-      margin-bottom: 18px;
-      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
-    }}
-    h1, h2 {{ margin-top: 0; }}
-    .meta {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }}
-    .meta div {{ background: #f8fafc; border-radius: 12px; padding: 12px; }}
-    .label {{ display: block; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; }}
-    table {{ width: 100%; border-collapse: collapse; }}
-    th, td {{ padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; }}
-    th {{ color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; }}
-    .plot-title {{ margin-bottom: 8px; color: var(--muted); }}
-    .notes {{ white-space: pre-wrap; background: #f8fafc; border-radius: 12px; padding: 14px; }}
-  </style>
-</head>
-<body>
-  <main>
-    <section class=\"card\">
-      <h1>LNA Characterization Report</h1>
-      <div class=\"meta\">
-        <div><span class=\"label\">Serial Number</span>{escape(record.serial_number)}</div>
-        <div><span class=\"label\">Preamp Version</span>{escape(record.preamp_version)}</div>
-        <div><span class=\"label\">Timestamp UTC</span>{escape(record.timestamp_utc.isoformat())}</div>
-        <div><span class=\"label\">Station</span>{escape(record.station_name)}</div>
-        <div><span class=\"label\">Instrument</span>{escape(record.instrument_id)}</div>
-        <div><span class=\"label\">Noise Head</span>{escape(record.noise_head_id)}</div>
-        <div><span class=\"label\">Run ID</span>{escape(record.run_id)}</div>
-        <div><span class=\"label\">Retest</span>{'Yes' if record.is_retest else 'No'}</div>
-      </div>
-    </section>
-
-    <section class=\"card\">
-      <h2>Engineering Summary</h2>
-      <table>
-        <thead><tr><th>Frequency</th><th>Noise Figure (dB)</th><th>Gain (dB)</th></tr></thead>
-        <tbody>{key_points}</tbody>
-      </table>
-    </section>
-
-    <section class=\"card\">
-      <h2>Noise Figure Sweep</h2>
-      <div class=\"plot-title\">{escape(record.nf_trace.label)} ({escape(record.nf_trace.unit)})</div>
-      {_svg_plot(record.nf_trace, '#0f766e', y_min=0.0, y_max=6.0, y_step=1.0)}
-    </section>
-
-    <section class=\"card\">
-      <h2>Gain Sweep</h2>
-      <div class=\"plot-title\">{escape(record.gain_trace.label)} ({escape(record.gain_trace.unit)})</div>
-      {_svg_plot(record.gain_trace, '#b45309', y_min=0.0, y_max=30.0, y_step=5.0)}
-    </section>
-
-    <section class=\"card\">
-      <h2>Retest Notes</h2>
-      <div class=\"notes\">{escape(record.notes)}</div>
-    </section>
-
-    {comparison_html}
-  </main>
-</body>
-</html>
-"""
+        return render_compact_report(record, previous_record, doc_dir=self._doc_dir)
 
 
 class JsonArtifactWriter:

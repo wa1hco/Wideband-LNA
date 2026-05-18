@@ -74,6 +74,10 @@ class RunRecord:
     nf_trace: SweepTrace
     gain_trace: SweepTrace
     summary: MeasurementSummary
+    operator: str = ""
+    calibration_date: str = ""
+    calibration_method: str = ""
+    fixture_loss_db: float = 0.0
     report_path: str | None = None
 
     def to_dict(self) -> dict[str, Any]:
@@ -96,6 +100,10 @@ class RunRecord:
         nf_trace: SweepTrace,
         gain_trace: SweepTrace,
         summary: MeasurementSummary,
+        operator: str = "",
+        calibration_date: str = "",
+        calibration_method: str = "",
+        fixture_loss_db: float = 0.0,
     ) -> "RunRecord":
         return cls(
             run_id=str(uuid.uuid4()),
@@ -111,4 +119,8 @@ class RunRecord:
             nf_trace=nf_trace,
             gain_trace=gain_trace,
             summary=summary,
+            operator=operator,
+            calibration_date=calibration_date,
+            calibration_method=calibration_method,
+            fixture_loss_db=fixture_loss_db,
         )
