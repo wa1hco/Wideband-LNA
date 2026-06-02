@@ -15,7 +15,7 @@ from lna_bench.transport import MockTransport, VisaResourceSettings, VisaTranspo
 
 def _get_doc_dir() -> Path | None:
     """Return the path to the doc directory (test/lna_bench/doc)."""
-    project_root = Path(__file__).parent.parent.parent.parent.parent
+    project_root = Path(__file__).parent.parent.parent
     doc_dir = project_root / "doc"
     return doc_dir if doc_dir.exists() else None
 
@@ -85,10 +85,12 @@ def _cmd_probe(args: argparse.Namespace) -> int:
     with _instrument_command_guard(config):
         with transport:
             controller.acquire_computer_control()
+            snapshot = controller.snapshot_state()
             try:
                 print(f"Resources: {transport.list_resources()}")
                 print(f"Instrument ID: {controller.identify()}")
             finally:
+                controller.restore_state(snapshot)
                 controller.release_to_user_control()
     return 0
 
@@ -101,10 +103,12 @@ def _cmd_verify_config(args: argparse.Namespace) -> int:
     with _instrument_command_guard(config):
         with transport:
             controller.acquire_computer_control()
+            snapshot = controller.snapshot_state()
             try:
                 controller.apply_configuration()
                 results = controller.verify_configuration()
             finally:
+                controller.restore_state(snapshot)
                 controller.release_to_user_control()
 
     if not results:
@@ -194,6 +198,7 @@ def _cmd_record(args: argparse.Namespace) -> int:
     with _instrument_command_guard(config):
         with transport:
             controller.acquire_computer_control()
+            snapshot = controller.snapshot_state()
             try:
                 controller.apply_configuration()
                 verification = controller.verify_configuration()
@@ -205,6 +210,7 @@ def _cmd_record(args: argparse.Namespace) -> int:
                 instrument_id = controller.identify()
                 capture = controller.capture_sweep()
             finally:
+                controller.restore_state(snapshot)
                 controller.release_to_user_control()
 
     record = RunRecord.create(

@@ -39,6 +39,12 @@ class CommandConfig:
     nf_data_query: str
     gain_data_query: str
     frequency_data_query: str | None
+    key_point_set_frequency_command: str | None
+    key_point_nf_query: str | None
+    key_point_gain_query: str | None
+    key_point_settle_ms: int
+    state_snapshot_query: str | None
+    state_restore_command: str | None
 
 
 @dataclass(slots=True)
@@ -139,6 +145,11 @@ def load_config(path: str | Path) -> AppConfig:
     )
 
     frequency_query = str(command_section.get("frequency_data_query", "")).strip() or None
+    key_point_set_frequency_command = str(command_section.get("key_point_set_frequency_command", "")).strip() or None
+    key_point_nf_query = str(command_section.get("key_point_nf_query", "")).strip() or None
+    key_point_gain_query = str(command_section.get("key_point_gain_query", "")).strip() or None
+    state_snapshot_query = str(command_section.get("state_snapshot_query", "")).strip() or None
+    state_restore_command = str(command_section.get("state_restore_command", "")).strip() or None
     commands = CommandConfig(
         identify_query=str(command_section.get("identify_query", "*IDN?")),
         opc_query=str(command_section.get("opc_query", "*OPC?")),
@@ -146,6 +157,12 @@ def load_config(path: str | Path) -> AppConfig:
         nf_data_query=str(_get_required(command_section, "nf_data_query")),
         gain_data_query=str(_get_required(command_section, "gain_data_query")),
         frequency_data_query=frequency_query,
+        key_point_set_frequency_command=key_point_set_frequency_command,
+        key_point_nf_query=key_point_nf_query,
+        key_point_gain_query=key_point_gain_query,
+        key_point_settle_ms=int(command_section.get("key_point_settle_ms", 0)),
+        state_snapshot_query=state_snapshot_query,
+        state_restore_command=state_restore_command,
     )
 
     control = InstrumentControlConfig(

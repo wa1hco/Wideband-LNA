@@ -11,31 +11,35 @@ read_termination = "\n"
 write_termination = "\n"
 
 [sweep]
-# 10 MHz – 3 GHz at 401 points covers all amateur VHF/UHF/microwave bands
 start_hz = 10000000.0
 stop_hz = 3000000000.0
-points = 401
-key_frequencies_hz = [
-    50000000.0,
-    144000000.0,
-    222000000.0,
-    432000000.0,
-    903000000.0,
-    1296000000.0,
-    2304000000.0,
-]
+# Use fewer sweep points for faster production throughput.
+points = 121
+key_frequencies_hz = [50000000.0, 144000000.0, 222000000.0, 432000000.0, 903000000.0, 1296000000.0, 2304000000.0]
 
 [commands]
 identify_query = "*IDN?"
-# opc_query left blank: N8973A does not require OPC polling between trigger and fetch
 opc_query = ""
-# prepare_measurement_commands left empty: INIT:CONT ON keeps the instrument
-# sweeping continuously; no explicit trigger/abort cycle is needed.
 prepare_measurement_commands = []
-# FETC:CORR:* returns temperature-corrected (calibrated) NF and gain data
 nf_data_query = "FETC:CORR:NFIG?"
 gain_data_query = "FETC:CORR:GAIN?"
 frequency_data_query = ""
+
+# Optional direct key-point mode for speed:
+# If all 3 commands below are set, key frequencies are measured directly at each target
+# instead of being estimated from the coarse sweep trace.
+# Available template variables: {frequency_hz}, {frequency_mhz}, {frequency_ghz}
+key_point_set_frequency_command = ""
+key_point_nf_query = ""
+key_point_gain_query = ""
+key_point_settle_ms = 0
+
+# Optional state save/restore around each operation (probe/verify/record).
+# Example for instruments supporting *LRN?:
+# state_snapshot_query = "*LRN?"
+# state_restore_command = "{state}"
+state_snapshot_query = ""
+state_restore_command = ""
 
 [control]
 acquire_commands = []
@@ -43,21 +47,16 @@ release_commands = []
 release_to_local = true
 
 [configuration]
-# Put the instrument into continuous-sweep mode before each run.
-apply_commands = ["INIT:CONT ON"]
+# Add required pre-test setup commands here as you define your station state.
+apply_commands = [
+	"INIT:CONT ON",
+]
 fail_on_mismatch = true
 
-[[configuration.verify_checks]]
-name = "continuous sweep enabled"
-query = "INIT:CONT?"
-expected = "1"
-match = "exact"
+verify_checks = [
+	{ name = "continuous_sweep_enabled", query = "INIT:CONT?", expected = "1", match = "exact" },
+]
 
 [runtime]
 single_instance = true
 lock_stale_seconds = 1800
-
-[calibration]
-calibration_date = "2026-05-17"
-calibration_method = "N8973A factory calibration"
-fixture_loss_db = 0.0

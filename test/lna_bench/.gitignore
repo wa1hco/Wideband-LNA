@@ -12,9 +12,13 @@ dist/
 
 # Local bench runtime artifacts
 output/
+reports/
 
 # Local station-specific config
 config/station.toml
 
 # Editor-local settings
 .vscode/
+
+# Editor-staging tempfiles (e.g. .py.tmp.<pid>.<hash>)
+*.tmp.*

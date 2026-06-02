@@ -78,6 +78,8 @@ class RunRecord:
     calibration_date: str = ""
     calibration_method: str = ""
     fixture_loss_db: float = 0.0
+    measurement_bandwidth_hz: float = 0.0
+    key_point_averages: int = 0
     report_path: str | None = None
 
     def to_dict(self) -> dict[str, Any]:
@@ -104,6 +106,8 @@ class RunRecord:
         calibration_date: str = "",
         calibration_method: str = "",
         fixture_loss_db: float = 0.0,
+        measurement_bandwidth_hz: float = 0.0,
+        key_point_averages: int = 0,
     ) -> "RunRecord":
         return cls(
             run_id=str(uuid.uuid4()),
@@ -123,4 +127,6 @@ class RunRecord:
             calibration_date=calibration_date,
             calibration_method=calibration_method,
             fixture_loss_db=fixture_loss_db,
+            measurement_bandwidth_hz=measurement_bandwidth_hz,
+            key_point_averages=key_point_averages,
         )

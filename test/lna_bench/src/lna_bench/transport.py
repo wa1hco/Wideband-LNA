@@ -46,14 +46,20 @@ class VisaTransport:
         self._resource = resource
 
     def close(self) -> None:
+        # Best-effort teardown: a flaky VISA close (e.g. VI_ERROR_INV_OBJECT from a
+        # stale session) must not mask successful measurement data captured earlier.
         if self._resource is not None:
             try:
                 self._resource.close()
+            except Exception:
+                pass
             finally:
                 self._resource = None
         if self._resource_manager is not None:
             try:
                 self._resource_manager.close()
+            except Exception:
+                pass
             finally:
                 self._resource_manager = None
 
