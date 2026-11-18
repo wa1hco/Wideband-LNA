@@ -104,6 +104,7 @@
 			(dielectric_constraints yes)
 		)
 		(pad_to_mask_clearance 0)
+		(solder_mask_min_width 0.1)
 		(allow_soldermask_bridges_in_footprints no)
 		(tenting
 			(front yes)
@@ -10849,8 +10850,8 @@
 		)
 		(min_thickness 0.25)
 		(fill yes
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 		)
 		(polygon
@@ -11555,8 +11556,8 @@
 		(min_thickness 0.25)
 		(fill yes
 			(mode hatch)
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 			(hatch_thickness 1)
 			(hatch_gap 1.5)
@@ -11590,8 +11591,8 @@
 		(min_thickness 0.25)
 		(fill yes
 			(mode hatch)
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 			(hatch_thickness 1)
 			(hatch_gap 1.5)
@@ -11625,8 +11626,8 @@
 		(min_thickness 0.25)
 		(fill yes
 			(mode hatch)
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 			(hatch_thickness 1)
 			(hatch_gap 1.5)
@@ -11666,8 +11667,8 @@
 		(min_thickness 0.25)
 		(fill yes
 			(mode hatch)
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 			(hatch_thickness 1)
 			(hatch_gap 1.5)
@@ -11701,8 +11702,8 @@
 		(min_thickness 0.25)
 		(fill yes
 			(mode hatch)
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 			(hatch_thickness 1)
 			(hatch_gap 1.5)
@@ -11736,8 +11737,8 @@
 		(min_thickness 0.25)
 		(fill yes
 			(mode hatch)
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 			(hatch_thickness 1)
 			(hatch_gap 1.5)
@@ -11781,8 +11782,8 @@
 			(sheetname "/")
 		)
 		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 		)
 		(polygon
@@ -11811,8 +11812,8 @@
 			(sheetname "/")
 		)
 		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 		)
 		(polygon
@@ -11841,8 +11842,8 @@
 			(sheetname "/")
 		)
 		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 		)
 		(polygon
@@ -11871,8 +11872,8 @@
 			(sheetname "/")
 		)
 		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 		)
 		(polygon
@@ -11901,8 +11902,8 @@
 			(sheetname "/")
 		)
 		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 		)
 		(polygon
@@ -11931,8 +11932,8 @@
 			(sheetname "/")
 		)
 		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 		)
 		(polygon
@@ -11961,8 +11962,8 @@
 			(sheetname "/")
 		)
 		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 		)
 		(polygon
@@ -11991,8 +11992,8 @@
 			(sheetname "/")
 		)
 		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 		)
 		(polygon
@@ -12021,8 +12022,8 @@
 			(sheetname "/")
 		)
 		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 		)
 		(polygon
@@ -12051,8 +12052,8 @@
 			(sheetname "/")
 		)
 		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 		)
 		(polygon
@@ -12081,8 +12082,8 @@
 			(sheetname "/")
 		)
 		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 		)
 		(polygon
@@ -12111,8 +12112,8 @@
 			(sheetname "/")
 		)
 		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 		)
 		(polygon
@@ -12141,8 +12142,8 @@
 			(sheetname "/")
 		)
 		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 		)
 		(polygon
@@ -12171,8 +12172,8 @@
 			(sheetname "/")
 		)
 		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 		)
 		(polygon
@@ -12201,8 +12202,8 @@
 			(sheetname "/")
 		)
 		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 		)
 		(polygon
@@ -12231,8 +12232,8 @@
 			(sheetname "/")
 		)
 		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 		)
 		(polygon
@@ -12261,8 +12262,8 @@
 			(sheetname "/")
 		)
 		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 		)
 		(polygon
@@ -12291,8 +12292,8 @@
 			(sheetname "/")
 		)
 		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 		)
 		(polygon
@@ -12321,8 +12322,8 @@
 			(sheetname "/")
 		)
 		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 		)
 		(polygon
@@ -12351,8 +12352,8 @@
 			(sheetname "/")
 		)
 		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 		)
 		(polygon
@@ -12381,8 +12382,8 @@
 			(sheetname "/")
 		)
 		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 		)
 		(polygon
@@ -12411,8 +12412,8 @@
 			(sheetname "/")
 		)
 		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 		)
 		(polygon
@@ -12441,8 +12442,8 @@
 			(sheetname "/")
 		)
 		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 		)
 		(polygon
@@ -12471,8 +12472,8 @@
 			(sheetname "/")
 		)
 		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 		)
 		(polygon
@@ -12501,8 +12502,8 @@
 			(sheetname "/")
 		)
 		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 		)
 		(polygon
@@ -12531,8 +12532,8 @@
 			(sheetname "/")
 		)
 		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 		)
 		(polygon
@@ -12561,8 +12562,8 @@
 			(sheetname "/")
 		)
 		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
+			(thermal_gap 0.3)
+			(thermal_bridge_width 0.4)
 			(island_removal_mode 0)
 		)
 		(polygon
