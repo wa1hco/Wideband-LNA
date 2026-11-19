@@ -3,26 +3,26 @@
 # https://jlcpcb.com/capabilities/pcb-capabilities
 
 (rule "JLC PTH annular ring"
-  (constraint annular_width (min 0.15))
+  (constraint annular_width (min 0.15mm))
   (condition "A.Type == 'Pad' && A.Pad_Type == 'Through-hole'"))
 
 (rule "JLC pad hole to hole"
-  (constraint hole_to_hole (min 0.45))
+  (constraint hole_to_hole (min 0.45mm))
   (condition "A.Type == 'Pad' && B.Type == 'Pad'"))
 
 (rule "JLC PTH to track"
-  (constraint hole_clearance (min 0.28))
+  (constraint hole_clearance (min 0.28mm))
   (condition "A.Type == 'Pad' && A.Pad_Type == 'Through-hole' && B.Type == 'Track'"))
 
 (rule "JLC NPTH minimum"
-  (constraint hole_size (min 0.5))
+  (constraint hole_size (min 0.5mm))
   (condition "A.Type == 'Pad' && A.Pad_Type == 'NPTH, mechanical'"))
 
 (rule "JLC SMD pad to pad"
-  (constraint clearance (min 0.15))
+  (constraint clearance (min 0.15mm))
   (condition "A.Type == 'Pad' && B.Type == 'Pad' && A.Pad_Type == 'SMD' && B.Pad_Type == 'SMD' && A.Net != B.Net"))
 
 (rule "JLC inner layer PTH to copper"
   (layer inner)
-  (constraint hole_clearance (min 0.3))
+  (constraint hole_clearance (min 0.3mm))
   (condition "A.Type == 'Pad' && A.Pad_Type == 'Through-hole'"))
